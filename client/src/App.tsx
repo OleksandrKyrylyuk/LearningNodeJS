@@ -1,10 +1,15 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route, Routes } from 'react-router-dom';
+import UserList from './components/userList';
 
 const App = () => {
   return (
-    <h1>Hellow</h1>
+    <Routes>
+      <Route path="/" element={<UserList />}/>
+
+    </Routes>
   )
 }
 

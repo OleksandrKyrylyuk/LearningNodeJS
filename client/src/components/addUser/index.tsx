@@ -1,11 +1,12 @@
-import { Field, Form, FormikProvider, useFormik } from 'formik';
+import {  Form, FormikProvider, useFormik } from 'formik';
+import { useNavigate } from 'react-router-dom';
 import { useActions } from '../../hooks/useActions';
 import InputGroup from '../common/InputComponent/input';
 import {AddUserData} from "./types"
 import { AddUSerSchema } from './validation';
 
 const AddUser = () => {
-
+	const navigate = useNavigate();
 	const { AddUser } = useActions();
 
 	const initValues:AddUserData = {
@@ -16,14 +17,19 @@ const AddUser = () => {
 	}
 
 	const onHandleSubmit = async () => {
-		await AddUser(values);
+    try {
+      	await AddUser(values);
+        navigate("/userlist");
+    } catch (error ) {
+      setFieldError("Email", error as string);
+    }
 	}
 	const formik = useFormik({
     initialValues: initValues,
     validationSchema: AddUSerSchema,
     onSubmit: onHandleSubmit,
   });
- const { values, errors, touched, handleChange, handleSubmit } = formik;
+ const { values, errors, touched, handleChange, handleSubmit, setFieldError } = formik;
 
 	return (
     <>

@@ -1,11 +1,9 @@
-import AddUser from '../addUser';
-import UserList from '../userList';
+
 
 const Home = () => {
 	return (
     <>
-	  <AddUser />
-      <UserList />
+    <h1>Home</h1>
     </>
   );
 };

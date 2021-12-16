@@ -19,16 +19,16 @@ const UserList = () => {
             <th scope="col">Id</th>
             <th scope="col">Name</th>
             <th scope="col">SurName</th>
-            <th scope="col">Role</th>
+            <th scope="col">Email</th>
           </tr>
         </thead>
         <tbody>
-          {data && data.map((el) => (
-            <tr key={el.Id} className="table-secondary">
-              <th scope="row">{el.Id}</th>
-              <td>{el.Name}</td>
-              <td>{el.Surname}</td>
-              <td>{el.Role}</td>
+          {data.map(({ id, Name, Surname, Email }) => (
+            <tr key={id} className="table-secondary">
+              <th scope="row">{id}</th>
+              <td>{Name}</td>
+              <td>{Surname}</td>
+              <td>{Email}</td>
             </tr>
           ))}
         </tbody>

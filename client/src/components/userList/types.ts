@@ -17,10 +17,10 @@ export interface IGetUsersState {
 }
 
 export interface IUserData {
-  Id: number;
+  id: number,
   Name: string;
   Surname: string;
-  Role: string;
+  Email: string
 }
 
 

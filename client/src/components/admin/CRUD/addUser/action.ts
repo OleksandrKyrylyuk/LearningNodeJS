@@ -1,6 +1,6 @@
 import { Dispatch } from 'react';
 import { AddUserData, AddUserAction, AddUserResponse } from './types';
-import http from "../../http"
+import http from "../../../../http"
 import axios, { AxiosError } from 'axios';
 
 export const AddUser = (data: AddUserData) => {

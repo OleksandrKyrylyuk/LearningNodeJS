@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import { getUsersReducer } from '../components/userList/reducer';
-import { addUserReducer } from '../components/addUser/reducer'
+import { getUsersReducer } from '../components/admin/CRUD/reducer';
+import { addUserReducer } from '../components/admin/CRUD/addUser/reducer'
 
 export const rootReducer = combineReducers({
 	getUsers: getUsersReducer,

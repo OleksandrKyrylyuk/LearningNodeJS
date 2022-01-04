@@ -1,6 +1,6 @@
 import * as yup from "yup";
 
-export const AddUSerSchema = yup.object({
+export const USerSchema = yup.object({
   Email: yup
     .string()
     .email("Введіть коректний Email")

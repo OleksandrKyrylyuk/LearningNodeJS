@@ -10,12 +10,6 @@ export const addUserReducer = (state = initState, action: AddUserActions) => {
 
     case AddUserActionsTypes.ADD_USER:
       return { ...state, loading: true };
-    case AddUserActionsTypes.ADD_USER:
-      return { ...state, loading: false };
-    case AddUserActionsTypes.ADD_USER:
-      return { ...state, loading:false };
-
-
     default:
       return state;
   }

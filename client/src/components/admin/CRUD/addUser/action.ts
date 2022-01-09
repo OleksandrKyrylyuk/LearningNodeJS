@@ -6,7 +6,7 @@ import axios, { AxiosError } from 'axios';
 export const AddUser = (data: AddUserData) => {
 	return async (dispatch: Dispatch<AddUserAction>) => {
 		try {
-			const response = await http.post<AddUserResponse>("/api/users", data);
+		await http.post<AddUserResponse>("/api/users", data);
 			
 		} catch (error) {
 

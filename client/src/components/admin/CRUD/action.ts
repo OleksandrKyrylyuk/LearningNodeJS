@@ -32,7 +32,8 @@ export const GetUserById =
 export const DeleteUserById =
   (id: number) => async (dispatch: Dispatch<IUsersActions>) => {
     try {
-      const response = await http.delete<DelResponse>(`/api/users/delete/${id}`);
+     await http.delete<DelResponse>(`/api/users/delete/${id}`);
+      
       dispatch({
         type: IUsersActionTypes.DELETE_USER_BY_ID,
         payload: id

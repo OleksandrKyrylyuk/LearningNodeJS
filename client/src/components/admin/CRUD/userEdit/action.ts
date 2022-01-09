@@ -1,4 +1,3 @@
-import { Dispatch } from "react";
 import http from "../../../../http";
 import axios, { AxiosError } from "axios";
 import {  IEditResponse, IEditUser } from './types';

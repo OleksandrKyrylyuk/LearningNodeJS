@@ -1,5 +1,5 @@
 import { DataTable } from "primereact/datatable";
-import { confirmDialog } from "primereact/confirmdialog";
+import { ConfirmDialog } from "primereact/confirmdialog";
 import { Toast } from "primereact/toast";
 import { Column } from "primereact/column";
 import { Dialog } from "primereact/dialog"
@@ -20,55 +20,29 @@ const UserList = () => {
   const navigate = useNavigate();
   const toast = useRef<Toast>(null);
   const [dialog, setDialog] = useState(false);
+  const [visible, setVisible] = useState(false);
   const [delId, setDelId] = useState<number>(0);
 	useEffect(() => {
-		GetAllUsers();
-	}, []);
+    GetAllUsers();
+  }, [GetAllUsers]);
 
 const UserInfo = async (id:number) => {
   await GetUserById(id);
   setDialog(true);
 }
-
-const confirmDelete = (id: number) => {
-  setDelId(id)
-  confirmDialog({
-    message: "Are you sure you want to delete?",
-    header: "Confirmation",
-    icon: "pi pi-exclamation-triangle",
-    accept,
-    reject,
-  });
-};
-
-const accept = () => {
-  DeleteUserById(delId);
-  toast.current && toast.current.show({
-    severity: "info",
-    summary: "Confirmed",
-    detail: "You have accepted",
-    life: 3000,
-  });
-};
-
-const reject = () => {
-  toast.current && toast.current.show({
-      severity: "info",
-      summary: "Rejected",
-      detail: "You have rejected",
-      life: 3000,
-    });
-};
-
  const actionBodyTemplate = (rowData: IUserData) => {
+     const delUser = async (id: number) => {
+       await setVisible(true);
+       setDelId(id);
+     }; 
    return (
      <>
        <Button
          icon="pi pi-info"
          className="p-button-rounded p-button-info p-mr-2"
          onClick={() => {
-          rowData.id && UserInfo(rowData.id)
-          }}
+           rowData.id && UserInfo(rowData.id);
+         }}
        />
        <Button
          icon="pi pi-pencil"
@@ -80,7 +54,26 @@ const reject = () => {
        <Button
          icon="pi pi-trash"
          className="p-button-rounded p-button-warning"
-         onClick={() => confirmDelete(Number(rowData.id))}
+         onClick={() => delUser(Number(rowData.id))}
+       />
+       <ConfirmDialog
+         visible={visible}
+         onHide={() => setVisible(false)}
+         message="Do you want to delete this user?"
+         header="Confirmation"
+         icon="pi pi-exclamation-triangle"
+         accept={() => {
+           DeleteUserById(delId);
+
+           if (toast.current !== null) {
+             toast.current.show({
+               severity: "info",
+               summary: "Done",
+               detail: "User has been deleted",
+               life: 3000,
+             });
+           }
+         }}
        />
      </>
    );

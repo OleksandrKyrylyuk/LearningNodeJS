@@ -1,6 +1,6 @@
 
 import { PanelMenu } from "primereact/panelmenu";
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const SideBar = () => {
   const navigate = useNavigate();

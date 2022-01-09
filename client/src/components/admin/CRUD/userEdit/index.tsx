@@ -16,8 +16,8 @@ const UserEdit = () => {
 	const navigate = useNavigate();
 	const _id = Number(id);
 	useEffect(() => {
-		GetUserById(_id);
-	}, [])
+    GetUserById(_id);
+  }, [GetUserById, _id]);
 
 	const onHandleSubmit = async () => {
     try {

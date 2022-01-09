@@ -18,7 +18,7 @@ export const getUsersReducer = (state = initState,action: IUsersActions): IGetUs
     case IUsersActionTypes.GET_USER_BY_ID:
       return { ...state, info: action.payload };
     case IUsersActionTypes.DELETE_USER_BY_ID:
-      return { ...state, data: state.data.filter((el) => el.id ! == action.payload) };
+      return { ...state, data: state.data.filter((el) => el.id !== action.payload) };
 
     default:
       return state;
